@@ -1,3 +1,8 @@
+# veilshift-t2-25
+Official HackFest 2026 repository for team VeilShift (T2-25).
+
+---
+
 # Veilshift (FRIDAY) — Explainable Zero-Day Code Security & Virtual Hotpatching
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
