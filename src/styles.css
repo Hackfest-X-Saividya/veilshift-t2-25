@@ -1,0 +1,357 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+@import "@xyflow/react/dist/style.css" layer(base);
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-sans: "Geist", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, "SFMono-Regular", monospace;
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.25rem;
+  --radius-2xl: 1.5rem;
+  --radius-3xl: 2rem;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-panel: var(--panel);
+  --color-elevated: var(--elevated);
+  --color-sev-critical: var(--sev-critical);
+  --color-sev-high: var(--sev-high);
+  --color-sev-medium: var(--sev-medium);
+  --color-sev-low: var(--sev-low);
+  --color-sev-info: var(--sev-info);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-node-source: var(--node-source);
+  --color-node-transform: var(--node-transform);
+  --color-node-sink: var(--node-sink);
+  --color-node-asset: var(--node-asset);
+  --color-node-safe: var(--node-safe);
+  --color-code-kw: var(--code-kw);
+  --color-code-str: var(--code-str);
+  --color-code-fn: var(--code-fn);
+  --color-code-num: var(--code-num);
+  --color-code-dec: var(--code-dec);
+  --color-code-hl: var(--code-hl);
+}
+
+/* Default / Light: Clean, Grounded Warm Cream & Deep Burgundy Developer Tool */
+:root {
+  --radius: 0.625rem;
+  --background: #f7f5f0;
+  --foreground: #1c1917;
+  --sidebar: #f0ece3;
+  --panel: #ffffff;
+  --card: #ffffff;
+  --elevated: #ffffff;
+  --card-foreground: var(--foreground);
+  --popover: #ffffff;
+  --popover-foreground: var(--foreground);
+
+  /* Deep Burgundy Primary */
+  --primary: #5c182d;
+  --primary-foreground: #fcfaf6;
+
+  /* Grounded Neutral Accents */
+  --secondary: #eeeae0;
+  --secondary-foreground: #2d372c;
+  --muted: #eae5da;
+  --muted-foreground: #63615b;
+  --accent: rgba(92, 24, 45, 0.06);
+  --accent-foreground: #5c182d;
+
+  /* Solid, crisp architectural borders */
+  --border: #dfd9cb;
+  --input: #dfd9cb;
+  --ring: #5c182d;
+  --destructive: #8a1d35;
+  --destructive-foreground: #ffffff;
+
+  /* Severity colors tailored to the palette */
+  --sev-critical: #831828; /* Deep burgundy */
+  --sev-high: #b45309;     /* Deep amber */
+  --sev-medium: #4d6349;   /* Grounded sage */
+  --sev-low: #3b5f70;      /* Steel blue */
+  --sev-info: #5c6c5a;     /* Muted sage */
+  --success: #2e6930;      /* Forest green */
+  --warning: #b45309;
+
+  --node-source: #5c182d;
+  --node-transform: #4d6349;
+  --node-sink: #831828;
+  --node-asset: #b45309;
+  --node-safe: #2e6930;
+
+  --chart-1: var(--sev-critical);
+  --chart-2: var(--sev-high);
+  --chart-3: var(--sev-medium);
+  --chart-4: var(--sev-low);
+  --chart-5: var(--primary);
+
+  --sidebar-foreground: var(--foreground);
+  --sidebar-primary: var(--primary);
+  --sidebar-primary-foreground: var(--primary-foreground);
+  --sidebar-accent: #e5dfd2;
+  --sidebar-accent-foreground: var(--foreground);
+  --sidebar-border: #dfd9cb;
+  --sidebar-ring: var(--ring);
+
+  --code-bg: #f4efe6;
+  --code-kw: #831828;
+  --code-str: #2e6930;
+  --code-fn: #2b4c5e;
+  --code-num: #b45309;
+  --code-dec: #4d6349;
+  --code-hl: rgba(131, 24, 40, 0.1);
+
+  --shadow-panel: 0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px -1px rgba(0, 0, 0, 0.05);
+  --glass-specular: none;
+  color-scheme: light;
+}
+
+/* Dark mode (Clean Charcoal & Deep Wine) */
+.dark {
+  --background: #141213;
+  --foreground: #f3f0ea;
+  --sidebar: #1a1718;
+  --panel: #1f1b1d;
+  --card: #1f1b1d;
+  --elevated: #282326;
+  --popover: #1f1b1d;
+  --primary: #c25272;
+  --primary-foreground: #1c0910;
+  --secondary: #2a2527;
+  --secondary-foreground: #d3ded0;
+  --muted: #282326;
+  --muted-foreground: #9a948e;
+  --accent: rgba(194, 82, 114, 0.15);
+  --accent-foreground: #e05d7f;
+  --border: #332d30;
+  --input: #332d30;
+  --ring: #c25272;
+  --destructive: #c25272;
+  --destructive-foreground: #ffffff;
+  --sev-critical: #e05d7f;
+  --sev-high: #e28a65;
+  --sev-medium: #a3b89f;
+  --sev-low: #8aa4b3;
+  --sev-info: #a4b3a1;
+  --success: #6ba874;
+  --warning: #e28a65;
+  --node-source: #c25272;
+  --node-transform: #a3b89f;
+  --node-sink: #e05d7f;
+  --node-asset: #e28a65;
+  --node-safe: #6ba874;
+  --sidebar-border: #332d30;
+  --sidebar-accent: #2a2527;
+  --code-bg: #191617;
+  --code-kw: #e05d7f;
+  --code-str: #6ba874;
+  --code-fn: #8aa4b3;
+  --code-hl: rgba(194, 82, 114, 0.18);
+  --shadow-panel: 0 1px 3px 0 rgba(0, 0, 0, 0.2);
+  --glass-specular: none;
+  color-scheme: dark;
+}
+
+@layer base {
+  * { border-color: var(--color-border); }
+  html {
+    background-color: var(--color-background);
+    scroll-behavior: smooth;
+  }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01", "cv11";
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  ::selection { background: color-mix(in oklab, var(--primary) 25%, transparent); }
+}
+
+/* Structural Panel & Card Utilities */
+@utility panel {
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-panel);
+}
+
+@utility glass-card {
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-panel);
+}
+
+@utility glass-pill {
+  border-radius: 9999px;
+  background-color: var(--muted);
+  border: 1px solid var(--border);
+}
+
+@utility code-surface {
+  background-color: var(--code-bg);
+}
+
+@utility eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+  font-weight: 600;
+}
+
+/* Aesthetic Mesh Gradients: Sage Grey + Warm Cream + Deep Burgundy */
+.bg-warm-cream {
+  background-color: #f7f4ed;
+}
+
+.burgundy-gradient {
+  background: linear-gradient(135deg, #5c182d 0%, #7b1e36 50%, #942542 100%);
+}
+
+.burgundy-pill {
+  background: #5c182d;
+  color: #fcfaf6;
+  box-shadow: 0 4px 15px rgba(92, 24, 45, 0.25), inset 0 1px 1px rgba(255, 255, 255, 0.3);
+}
+
+.sage-pill {
+  background: rgba(126, 142, 123, 0.16);
+  border: 1px solid rgba(126, 142, 123, 0.35);
+  color: #384636;
+}
+
+.vision-card-gradient-1 {
+  background: linear-gradient(135deg, rgba(92, 24, 45, 0.15) 0%, rgba(126, 142, 123, 0.2) 100%);
+}
+
+.vision-card-gradient-2 {
+  background: linear-gradient(135deg, rgba(126, 142, 123, 0.25) 0%, rgba(215, 219, 212, 0.4) 100%);
+}
+
+/* Ambient liquid spills and floating blobs */
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0px) scale(1); }
+  50% { transform: translateY(-16px) scale(1.03); }
+}
+
+@keyframes float-reverse {
+  0%, 100% { transform: translateY(0px) scale(1); }
+  50% { transform: translateY(18px) scale(0.97); }
+}
+
+.animate-float-slow {
+  animation: float-slow 10s ease-in-out infinite;
+}
+
+.animate-float-reverse {
+  animation: float-reverse 12s ease-in-out infinite;
+}
+
+@keyframes scan-sweep { from { transform: translateX(-100%); } to { transform: translateX(300%); } }
+@utility animate-sweep { animation: scan-sweep 1.4s ease-in-out infinite; }
+@keyframes dash-flow { to { stroke-dashoffset: -20; } }
+
+.react-flow { --xy-background-color: transparent; }
+.react-flow__edge.risky path.react-flow__edge-path {
+  stroke: #7d1c33;
+  stroke-width: 2;
+  stroke-dasharray: 6 4;
+  animation: dash-flow 1.2s linear infinite;
+}
+.react-flow__edge path.react-flow__edge-path {
+  stroke: rgba(126, 142, 123, 0.35);
+  stroke-width: 1.5;
+}
+.react-flow__edge.selected path.react-flow__edge-path {
+  stroke: var(--primary);
+  stroke-width: 2;
+}
+.react-flow__edge-textbg {
+  fill: rgba(255, 253, 248, 0.98);
+  rx: 6px;
+  ry: 6px;
+  stroke: rgba(215, 219, 212, 0.7);
+  stroke-width: 1px;
+}
+.dark .react-flow__edge-textbg {
+  fill: #161214;
+  stroke: rgba(255, 255, 255, 0.15);
+}
+.react-flow__edge-text {
+  fill: var(--muted-foreground);
+  font-family: var(--font-mono);
+  font-size: 8.5px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+.react-flow__controls {
+  box-shadow: 0 10px 30px rgba(85, 95, 80, 0.1);
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  overflow: hidden;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+.react-flow__controls-button {
+  background: var(--card);
+  border-bottom: 1px solid var(--border);
+  fill: var(--foreground);
+  color: var(--foreground);
+  transition: all 0.2s ease;
+}
+.react-flow__controls-button:hover {
+  background: var(--muted);
+  fill: var(--primary);
+  color: var(--primary);
+}
+.react-flow__minimap {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  overflow: hidden;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 10px 30px rgba(85, 95, 80, 0.1);
+}
+.react-flow__attribution { display: none; }

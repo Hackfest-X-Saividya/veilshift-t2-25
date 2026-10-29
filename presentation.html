@@ -1,0 +1,1300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FRIDAY · Official Pitch Deck & Presentation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0B0F19;
+      --card: #121826;
+      --card-alt: #161E30;
+      --card-hover: #1A243B;
+      --border: #26324D;
+      --border-light: rgba(255, 255, 255, 0.08);
+      --cyan: #00E5FF;
+      --cyan-glow: rgba(0, 229, 255, 0.25);
+      --emerald: #10B981;
+      --emerald-glow: rgba(16, 185, 129, 0.25);
+      --purple: #A855F7;
+      --purple-glow: rgba(168, 85, 247, 0.25);
+      --amber: #F59E0B;
+      --crimson: #EF4444;
+      --text: #F8FAFC;
+      --text-muted: #94A3B8;
+      --text-dim: #64748B;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      user-select: none;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      min-height: 100vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    /* Ambient background glow */
+    body::before {
+      content: "";
+      position: absolute;
+      top: -20%;
+      left: 10%;
+      width: 50vw;
+      height: 50vw;
+      background: radial-gradient(circle, rgba(0, 229, 255, 0.04) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    body::after {
+      content: "";
+      position: absolute;
+      bottom: -20%;
+      right: 10%;
+      width: 50vw;
+      height: 50vw;
+      background: radial-gradient(circle, rgba(168, 85, 247, 0.04) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Top presentation navigation bar */
+    header {
+      position: relative;
+      z-index: 10;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 28px;
+      border-bottom: 1px solid var(--border-light);
+      background: rgba(11, 15, 25, 0.85);
+      backdrop-filter: blur(12px);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-badge {
+      background: linear-gradient(135deg, #00E5FF 0%, #3B82F6 100%);
+      color: #000;
+      font-weight: 800;
+      font-size: 13px;
+      padding: 4px 10px;
+      border-radius: 6px;
+      letter-spacing: 0.5px;
+    }
+
+    .brand-title {
+      font-weight: 700;
+      font-size: 16px;
+      letter-spacing: 0.5px;
+      color: var(--text);
+    }
+
+    .brand-subtitle {
+      font-size: 13px;
+      color: var(--text-muted);
+      border-left: 1px solid var(--border);
+      padding-left: 12px;
+      margin-left: 4px;
+    }
+
+    .nav-controls {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .btn {
+      background: var(--card);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 7px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+    }
+
+    .btn:hover {
+      background: var(--card-hover);
+      border-color: var(--cyan);
+      box-shadow: 0 0 12px var(--cyan-glow);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #00E5FF 0%, #00B4D8 100%);
+      color: #000;
+      border: none;
+    }
+
+    .btn-primary:hover {
+      box-shadow: 0 0 16px var(--cyan-glow);
+      filter: brightness(1.1);
+    }
+
+    .slide-counter {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--cyan);
+      background: rgba(0, 229, 255, 0.08);
+      border: 1px solid rgba(0, 229, 255, 0.2);
+      padding: 6px 14px;
+      border-radius: 20px;
+    }
+
+    /* Main presentation view stage */
+    main {
+      flex: 1;
+      position: relative;
+      z-index: 5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 24px;
+    }
+
+    .slide-stage {
+      width: 100%;
+      max-width: 1320px;
+      aspect-ratio: 16 / 9;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.05);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Individual Slide */
+    .slide {
+      position: absolute;
+      inset: 0;
+      padding: 44px 56px;
+      display: flex;
+      flex-direction: column;
+      opacity: 0;
+      pointer-events: none;
+      transform: scale(0.98);
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .slide.active {
+      opacity: 1;
+      pointer-events: auto;
+      transform: scale(1);
+    }
+
+    /* Slide Header */
+    .slide-kicker {
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--cyan);
+      margin-bottom: 6px;
+    }
+
+    .slide-title {
+      font-size: 30px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: #FFF;
+      line-height: 1.2;
+    }
+
+    .slide-subtitle {
+      font-size: 15px;
+      color: var(--text-muted);
+      margin-top: 6px;
+      margin-bottom: 24px;
+      line-height: 1.4;
+    }
+
+    .slide-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 0;
+    }
+
+    /* Grid layouts */
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    /* Cards */
+    .feature-card {
+      background: var(--card-alt);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--cyan);
+    }
+
+    .card-kicker {
+      font-size: 10px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+
+    .card-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: #FFF;
+      margin-bottom: 8px;
+    }
+
+    .card-stat {
+      font-size: 26px;
+      font-weight: 800;
+      font-family: 'JetBrains Mono', monospace;
+      margin-bottom: 8px;
+    }
+
+    .card-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .code-pill {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid var(--border);
+      padding: 10px;
+      border-radius: 8px;
+      color: var(--cyan);
+      margin: 10px 0;
+      white-space: pre-wrap;
+    }
+
+    /* Custom Tables */
+    .slide-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: var(--card-alt);
+      font-size: 12.5px;
+    }
+
+    .slide-table th {
+      background: #0f172a;
+      padding: 12px 16px;
+      text-align: left;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--cyan);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .slide-table td {
+      padding: 11px 16px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      color: var(--text-muted);
+    }
+
+    .slide-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .slide-table td.highlight {
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .badge-crit { background: rgba(239, 68, 68, 0.15); color: #EF4444; border: 1px solid rgba(239, 68, 68, 0.3); }
+    .badge-high { background: rgba(245, 158, 11, 0.15); color: #F59E0B; border: 1px solid rgba(245, 158, 11, 0.3); }
+    .badge-success { background: rgba(16, 185, 129, 0.15); color: #10B981; border: 1px solid rgba(16, 185, 129, 0.3); }
+
+    /* Footer & Progress Bar */
+    .progress-bar-container {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .progress-bar {
+      height: 100%;
+      background: linear-gradient(90deg, #00E5FF, #A855F7);
+      width: 8.33%;
+      transition: width 0.3s ease;
+    }
+
+    /* Notes Drawer */
+    .notes-drawer {
+      position: fixed;
+      bottom: -320px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(900px, 92vw);
+      height: 280px;
+      background: rgba(18, 24, 38, 0.98);
+      border: 1px solid var(--cyan);
+      box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.8), 0 0 20px var(--cyan-glow);
+      border-radius: 16px 16px 0 0;
+      padding: 24px 32px;
+      z-index: 100;
+      transition: bottom 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .notes-drawer.open {
+      bottom: 0;
+    }
+
+    .notes-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .notes-title {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--cyan);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .notes-body {
+      flex: 1;
+      overflow-y: auto;
+      font-size: 14px;
+      color: var(--text);
+      line-height: 1.6;
+      white-space: pre-wrap;
+      font-family: inherit;
+    }
+
+    /* Slide Thumbnails Modal */
+    .overview-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(11, 15, 25, 0.95);
+      backdrop-filter: blur(16px);
+      z-index: 200;
+      display: none;
+      flex-direction: column;
+      padding: 40px;
+    }
+
+    .overview-modal.open {
+      display: flex;
+    }
+
+    .overview-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+
+    .overview-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      overflow-y: auto;
+      padding: 10px;
+    }
+
+    .overview-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 18px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .overview-card:hover, .overview-card.active {
+      border-color: var(--cyan);
+      transform: scale(1.02);
+      box-shadow: 0 0 15px var(--cyan-glow);
+    }
+
+    .overview-card-num {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--cyan);
+      margin-bottom: 6px;
+    }
+
+    .overview-card-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: #FFF;
+      line-height: 1.3;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Header Navigation -->
+  <header>
+    <div class="brand">
+      <span class="logo-badge">FRIDAY</span>
+      <span class="brand-title">Security Presentation Deck</span>
+      <span class="brand-subtitle">Explainable Zero-Day Security & Autonomous Virtual Hotpatching</span>
+    </div>
+
+    <div class="nav-controls">
+      <span class="slide-counter" id="slideIndicator">01 / 12</span>
+      <button class="btn" onclick="prevSlide()" title="Previous Slide (← / PageUp)">← Prev</button>
+      <button class="btn btn-primary" onclick="nextSlide()" title="Next Slide (→ / Space / Enter)">Next →</button>
+      <button class="btn" onclick="toggleNotes()" id="notesBtn" title="Toggle Speaker Notes (N)">📝 Notes</button>
+      <button class="btn" onclick="toggleOverview()" title="Slide Overview (O)">🗂️ Slides</button>
+      <button class="btn" onclick="toggleFullscreen()" title="Full Screen (F)">⛶ Fullscreen</button>
+    </div>
+  </header>
+
+  <!-- Presentation Stage -->
+  <main>
+    <div class="slide-stage" id="presentationContainer">
+
+      <!-- SLIDE 1: Title Hero -->
+      <div class="slide active" data-slide="1">
+        <div style="margin: auto 0;">
+          <div class="slide-kicker">AUTONOMOUS APPLICATION SECURITY PLATFORM · OFFICIAL DEFENSE PITCH</div>
+          <h1 class="slide-title" style="font-size: 52px; margin-bottom: 12px; letter-spacing: -1.5px;">FRIDAY</h1>
+          <h2 style="font-size: 24px; font-weight: 700; color: var(--cyan); margin-bottom: 8px;">
+            Explainable Zero-Day Security & Autonomous Virtual Hotpatching
+          </h2>
+          <p style="font-size: 16px; color: var(--text-muted); margin-bottom: 36px;">
+            Deterministic Client-Side AST Taint Analysis × NVIDIA Nemotron 3.5 Super VL Reasoning Engine
+          </p>
+
+          <div class="grid-3">
+            <div class="feature-card" style="border-top: 3px solid var(--emerald);">
+              <div class="card-kicker" style="color: var(--emerald);">ZERO-KNOWLEDGE PRIVACY</div>
+              <div class="card-title">100% In-Browser Execution</div>
+              <div class="card-desc">0 LOC transmitted to remote servers. Code is tokenized locally in browser worker threads; proprietary company IP never leaks.</div>
+            </div>
+
+            <div class="feature-card" style="border-top: 3px solid var(--cyan);">
+              <div class="card-kicker" style="color: var(--cyan);">NO SIGNATURES REQUIRED</div>
+              <div class="card-title">Grammar AST Taint Flow</div>
+              <div class="card-desc">Detects novel zero-day execution reachability via mathematical graph traversal before a CVE is ever published.</div>
+            </div>
+
+            <div class="feature-card" style="border-top: 3px solid var(--purple);">
+              <div class="card-kicker" style="color: var(--purple);">CLOSING THE 60-DAY GAP</div>
+              <div class="card-title">Autonomous Virtual Hotpatching</div>
+              <div class="card-desc">Instant synthesis of drop-in Express/Flask middleware and Cloudflare/ModSecurity WAF rules in under 30 seconds.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 2: The Core Problem -->
+      <div class="slide" data-slide="2">
+        <div class="slide-kicker">THE INDUSTRY CRISIS</div>
+        <h1 class="slide-title">The 60-Day Zero-Day Dilemma & The Privacy Hazard</h1>
+        <div class="slide-subtitle">Why traditional security tools (SonarQube, Snyk, Semgrep) fail modern enterprise engineering teams.</div>
+
+        <div class="grid-3" style="margin-top: 10px;">
+          <div class="feature-card" style="border-top: 3px solid var(--crimson);">
+            <div class="card-kicker" style="color: var(--crimson);">CRITICAL FLAW #01</div>
+            <div class="card-title">The Zero-Day Blindspot</div>
+            <div class="card-stat" style="color: var(--crimson);">0 CVEs</div>
+            <div class="card-desc">Traditional SAST relies strictly on known vulnerability databases. Bespoke application logic flaws and unconstrained dataflow sinks are 100% invisible because no signature exists.</div>
+          </div>
+
+          <div class="feature-card" style="border-top: 3px solid var(--amber);">
+            <div class="card-kicker" style="color: var(--amber);">CRITICAL FLAW #02</div>
+            <div class="card-title">The 60-Day Exposure Lag</div>
+            <div class="card-stat" style="color: var(--amber);">45 to 60 Days</div>
+            <div class="card-desc">The average enterprise takes 45 to 60 days to triage, code review, test, and ship a production refactor. Production servers remain exposed to active zero-day exploitation throughout this window.</div>
+          </div>
+
+          <div class="feature-card" style="border-top: 3px solid var(--purple);">
+            <div class="card-kicker" style="color: var(--purple);">CRITICAL FLAW #03</div>
+            <div class="card-title">The Cloud Privacy Trap</div>
+            <div class="card-stat" style="color: var(--purple);">100% Leaked</div>
+            <div class="card-desc">Modern 'AI code scanners' force enterprises to upload confidential source code to third-party cloud LLMs. This directly violates SOC2, HIPAA, and IP confidentiality agreements.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 3: The Solution -->
+      <div class="slide" data-slide="3">
+        <div class="slide-kicker">THE PARADIGM SHIFT</div>
+        <h1 class="slide-title">The FRIDAY Solution: Real-Time Client Taint & AI Defense</h1>
+        <div class="slide-subtitle">A privacy-preserving architecture that proves exploitability and neutralizes zero-days instantly.</div>
+
+        <div class="grid-2" style="margin-top: 10px;">
+          <div class="feature-card" style="border-left: 4px solid var(--cyan);">
+            <div class="card-kicker" style="color: var(--cyan);">1. ZERO-DAY REACHABILITY</div>
+            <div class="card-title">Deterministic AST Grammar Modeling</div>
+            <div class="card-desc">Instead of keyword matches, FRIDAY tokenizes code into full Abstract Syntax Trees. It mathematically models taint propagation from untrusted ingress to sensitive execution sinks.</div>
+          </div>
+
+          <div class="feature-card" style="border-left: 4px solid var(--emerald);">
+            <div class="card-kicker" style="color: var(--emerald);">2. VISUAL EXPLAINABILITY</div>
+            <div class="card-title">Interactive Graph (@xyflow/react)</div>
+            <div class="card-desc">Eliminates alert fatigue. FRIDAY maps the continuous flow path from HTTP parameter to execution sink. If input cannot reach the sink, it is never flagged as an alert.</div>
+          </div>
+
+          <div class="feature-card" style="border-left: 4px solid var(--purple);">
+            <div class="card-kicker" style="color: var(--purple);">3. INSTANT VIRTUAL HOTPATCHING</div>
+            <div class="card-title">Dual Middleware & Perimeter WAF Defense</div>
+            <div class="card-desc">While developers plan long-term refactoring, NVIDIA Nemotron generates drop-in Express/Flask middleware and perimeter Cloudflare/ModSecurity WAF rules in seconds.</div>
+          </div>
+
+          <div class="feature-card" style="border-left: 4px solid var(--amber);">
+            <div class="card-kicker" style="color: var(--amber);">4. ZERO-KNOWLEDGE PRIVACY</div>
+            <div class="card-title">100% In-Browser Execution & Storage</div>
+            <div class="card-desc">Parsing and taint analysis execute locally in the auditor's browser tab. Uploaded code persists in client IndexedDB. Zero proprietary lines of code are ever sent to an external server.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 4: Architecture -->
+      <div class="slide" data-slide="4">
+        <div class="slide-kicker">SYSTEM ARCHITECTURE</div>
+        <h1 class="slide-title">High-Performance In-Browser Triad Architecture</h1>
+        <div class="slide-subtitle">A decoupled defense pipeline strictly separating client AST parsing, AI reasoning, and defensive enforcement.</div>
+
+        <div class="grid-3" style="margin-top: 10px;">
+          <div class="feature-card" style="border-top: 3px solid var(--cyan);">
+            <div class="card-kicker" style="color: var(--cyan);">TIER 1: CLIENT TAINT ENGINE</div>
+            <div class="card-title">Deterministic In-Browser Core</div>
+            <ul style="font-size: 12.5px; color: var(--text-muted); line-height: 1.8; list-style: none; margin-top: 10px;">
+              <li><strong style="color: var(--text);">Stack:</strong> Vite 8 · TanStack Start SSR · Nitro</li>
+              <li><strong style="color: var(--text);">Engine:</strong> Python AST & TS/JS Lexical Parsers</li>
+              <li><strong style="color: var(--text);">Storage:</strong> Local IndexedDB via <code style="color: var(--cyan);">idb-keyval</code></li>
+              <li><strong style="color: var(--text);">Performance:</strong> &lt; 3.5s scan time; 0 LOC sent</li>
+            </ul>
+          </div>
+
+          <div class="feature-card" style="border-top: 3px solid var(--purple);">
+            <div class="card-kicker" style="color: var(--purple);">TIER 2: NVIDIA NEMOTRON AI</div>
+            <div class="card-title">Zero-Day Exploitability Triage</div>
+            <ul style="font-size: 12.5px; color: var(--text-muted); line-height: 1.8; list-style: none; margin-top: 10px;">
+              <li><strong style="color: var(--text);">Model:</strong> NVIDIA Nemotron 3.5 Super VL (120B)</li>
+              <li><strong style="color: var(--text);">Interface:</strong> Streaming Integrate API + Thinking Tokens</li>
+              <li><strong style="color: var(--text);">Triage:</strong> Ingress Vector, Constraint Gaps, Impact</li>
+              <li><strong style="color: var(--text);">Privacy:</strong> Scrubbed metadata only (No code)</li>
+            </ul>
+          </div>
+
+          <div class="feature-card" style="border-top: 3px solid var(--emerald);">
+            <div class="card-kicker" style="color: var(--emerald);">TIER 3: VIRTUAL HOTPATCHING</div>
+            <div class="card-title">Defense & Verification</div>
+            <ul style="font-size: 12.5px; color: var(--text-muted); line-height: 1.8; list-style: none; margin-top: 10px;">
+              <li><strong style="color: var(--text);">Perimeter WAF:</strong> ModSecurity / Cloudflare rules</li>
+              <li><strong style="color: var(--text);">App Middleware:</strong> Drop-in Node & Python filters</li>
+              <li><strong style="color: var(--text);">Verification:</strong> Deterministic 'System Check'</li>
+              <li><strong style="color: var(--text);">Sandbox:</strong> Interactive Countermeasure Lab</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 5: Coverage Matrix -->
+      <div class="slide" data-slide="5">
+        <div class="slide-kicker">ENGINE CAPABILITIES</div>
+        <h1 class="slide-title">Zero-Day Vulnerability Coverage Matrix</h1>
+        <div class="slide-subtitle">Grammar-level lexical taint tracking across Python and modern Full-Stack TypeScript/Node ecosystems.</div>
+
+        <table class="slide-table" style="margin-top: 8px;">
+          <thead>
+            <tr>
+              <th>Rule ID</th>
+              <th>Category</th>
+              <th>Target Stack</th>
+              <th>Detection Mechanism & Taint Vector</th>
+              <th>Severity</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="highlight" style="color: var(--cyan);">NODE-CMDI-004</td>
+              <td>Command Injection</td>
+              <td>Node.js, Express, TS</td>
+              <td>Traces req.query/body into child_process.exec() lacking argument arrays</td>
+              <td><span class="badge badge-crit">CRITICAL</span></td>
+            </tr>
+            <tr>
+              <td class="highlight" style="color: var(--cyan);">NODE-SQLI-005</td>
+              <td>SQL Injection</td>
+              <td>Node.js, pg, mysql2</td>
+              <td>Identifies dynamic ES6 template literals assigned to unparameterized clients</td>
+              <td><span class="badge badge-crit">CRITICAL</span></td>
+            </tr>
+            <tr>
+              <td class="highlight" style="color: var(--cyan);">REACT-XSS-001</td>
+              <td>Cross-Site Scripting</td>
+              <td>React, Next.js, TSX</td>
+              <td>Flags dangerouslySetInnerHTML without DOMPurify.sanitize() wrapper</td>
+              <td><span class="badge badge-high">HIGH</span></td>
+            </tr>
+            <tr>
+              <td class="highlight" style="color: var(--cyan);">JS-CODE-EVAL-003</td>
+              <td>Code Execution</td>
+              <td>JavaScript, TypeScript</td>
+              <td>Flags dynamic evaluation: eval(), new Function(), and string timer sinks</td>
+              <td><span class="badge badge-crit">CRITICAL</span></td>
+            </tr>
+            <tr>
+              <td class="highlight" style="color: var(--cyan);">PY-SQLI-001</td>
+              <td>SQL Injection</td>
+              <td>Python, Flask, FastAPI</td>
+              <td>Lexically tracks f-strings & % formatting reaching db.execute() & cursor</td>
+              <td><span class="badge badge-crit">CRITICAL</span></td>
+            </tr>
+            <tr>
+              <td class="highlight" style="color: var(--cyan);">PY-CMDI-001</td>
+              <td>Command Injection</td>
+              <td>Python, Flask, FastAPI</td>
+              <td>Traces route variables into os.system, os.popen, or subprocess(shell=True)</td>
+              <td><span class="badge badge-crit">CRITICAL</span></td>
+            </tr>
+            <tr>
+              <td class="highlight" style="color: var(--cyan);">WEB-LEAKED-SECRET</td>
+              <td>Secret Exposure</td>
+              <td>All Files / Bundles</td>
+              <td>Entropy scanner detecting hardcoded JWT secrets, AWS tokens, API keys</td>
+              <td><span class="badge badge-high">HIGH</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- SLIDE 6: Visual Explainability -->
+      <div class="slide" data-slide="6">
+        <div class="slide-kicker">VISUAL EXPLAINABILITY</div>
+        <h1 class="slide-title">Mathematical Proof of Exploitability via Flow Graphs</h1>
+        <div class="slide-subtitle">Replacing 500-line static warning lists with deterministic, verifiable source-to-sink pathways.</div>
+
+        <div class="grid-3" style="margin-top: 10px;">
+          <div class="feature-card" style="border: 1px solid var(--amber);">
+            <div class="card-kicker" style="color: var(--amber);">NODE 1: INGRESS SOURCE</div>
+            <div class="card-title">Untrusted HTTP Input</div>
+            <div class="code-pill">request.args['host']
+req.query.target</div>
+            <div class="card-desc">Attacker-controlled input enters the application through external network boundaries.</div>
+          </div>
+
+          <div class="feature-card" style="border: 1px solid var(--purple);">
+            <div class="card-kicker" style="color: var(--purple);">NODE 2: TAINT PROPAGATOR</div>
+            <div class="card-title">Unsanitized Flow</div>
+            <div class="code-pill">cmd = f"ping -c 2 {host}"
+`SELECT * FROM users ${id}`</div>
+            <div class="card-desc">Taint propagates through string formatting and variable passing without validation.</div>
+          </div>
+
+          <div class="feature-card" style="border: 1px solid var(--crimson);">
+            <div class="card-kicker" style="color: var(--crimson);">NODE 3: EXECUTION SINK</div>
+            <div class="card-title">Dangerous Execution</div>
+            <div class="code-pill">subprocess.check_output(shell=True)
+child_process.exec()</div>
+            <div class="card-desc">Unconstrained payload executes on host OS or database with arbitrary attacker control.</div>
+          </div>
+        </div>
+
+        <div class="grid-3" style="margin-top: 18px;">
+          <div class="feature-card" style="padding: 16px;">
+            <div style="font-weight: 700; color: var(--cyan); font-size: 13px; margin-bottom: 4px;">Zero Hallucinations</div>
+            <div style="font-size: 12px; color: var(--text-muted);">Backed by verifiable AST node coordinates—not probabilistic AI guesses.</div>
+          </div>
+          <div class="feature-card" style="padding: 16px;">
+            <div style="font-weight: 700; color: var(--emerald); font-size: 13px; margin-bottom: 4px;">Instant Auditor Alignment</div>
+            <div style="font-size: 12px; color: var(--text-muted);">Interactive @xyflow/react canvas allows compliance auditors to verify reachability instantly.</div>
+          </div>
+          <div class="feature-card" style="padding: 16px;">
+            <div style="font-weight: 700; color: var(--amber); font-size: 13px; margin-bottom: 4px;">0-Day Threat Surface Filter</div>
+            <div style="font-size: 12px; color: var(--text-muted);">One-click quick filter isolates reachable Critical & High vulnerabilities immediately.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 7: Autonomous Virtual Hotpatching -->
+      <div class="slide" data-slide="7">
+        <div class="slide-kicker">AUTONOMOUS REMEDIATION</div>
+        <h1 class="slide-title">Closing the 60-Day Exposure Window in Seconds</h1>
+        <div class="slide-subtitle">Instant defense-in-depth generated at runtime before manual code refactoring begins.</div>
+
+        <div class="grid-2" style="margin-top: 10px;">
+          <div class="feature-card" style="border: 1px solid var(--cyan);">
+            <div class="card-kicker" style="color: var(--cyan);">DEFENSE LAYER 1: APPLICATION MIDDLEWARE</div>
+            <div class="card-title">Drop-In Input Sanitization</div>
+            <div style="font-size: 11px; font-weight: 700; color: var(--cyan); background: var(--card); padding: 4px 8px; border-radius: 4px; display: inline-block; margin-bottom: 12px;">TARGET: Node.js / Express & Python / Flask</div>
+            <div class="card-desc" style="margin-bottom: 12px;">FRIDAY's NVIDIA Nemotron engine generates drop-in middleware specifically matched to the identified ingress parameter.</div>
+            <ul style="font-size: 12px; color: var(--text-muted); line-height: 1.8;">
+              <li>• Intercepts raw parameters before they reach business logic</li>
+              <li>• Neutralizes shell metacharacters: <code style="color: var(--cyan);">&amp; | ; $ &gt; &lt;</code></li>
+              <li>• Enforces strict regex validation bounds</li>
+              <li>• Deploys to containers in minutes</li>
+            </ul>
+          </div>
+
+          <div class="feature-card" style="border: 1px solid var(--emerald);">
+            <div class="card-kicker" style="color: var(--emerald);">DEFENSE LAYER 2: PERIMETER WAF SIGNATURE</div>
+            <div class="card-title">Zero-Touch Edge Blocking</div>
+            <div style="font-size: 11px; font-weight: 700; color: var(--emerald); background: var(--card); padding: 4px 8px; border-radius: 4px; display: inline-block; margin-bottom: 12px;">TARGET: Cloudflare WAF & ModSecurity CRS</div>
+            <div class="card-desc" style="margin-bottom: 12px;">For true zero-day emergencies where code cannot be immediately redeployed, FRIDAY generates instant perimeter inspection rules.</div>
+            <ul style="font-size: 12px; color: var(--text-muted); line-height: 1.8;">
+              <li>• Deploys directly to Cloudflare, AWS WAF, or Nginx</li>
+              <li>• Blocks exploitation at the network edge in &lt; 30 seconds</li>
+              <li>• Zero code changes, zero container restarts, zero downtime</li>
+              <li>• Buys engineering teams the full 60 days to refactor safely</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 8: Countermeasure Lab -->
+      <div class="slide" data-slide="8">
+        <div class="slide-kicker">VERIFICATION & TESTING</div>
+        <h1 class="slide-title">The Countermeasure Lab: Proof Before Production</h1>
+        <div class="slide-subtitle">Deterministic AST re-verification ensures candidate fixes actually neutralize the vulnerability.</div>
+
+        <div class="grid-3" style="margin-top: 10px;">
+          <div class="feature-card" style="border-top: 3px solid var(--cyan);">
+            <div class="card-kicker" style="color: var(--cyan);">STEP 1: TRIGGER</div>
+            <div class="card-title">One-Click 'Verify Solution'</div>
+            <div class="card-desc">Click 'Verify Solution with System Check' directly in the findings interface. FRIDAY extracts the candidate remediation patch and parses the proposed syntax tree.</div>
+          </div>
+
+          <div class="feature-card" style="border-top: 3px solid var(--purple);">
+            <div class="card-kicker" style="color: var(--purple);">STEP 2: AST AUDIT</div>
+            <div class="card-title">Deterministic Re-Evaluation</div>
+            <div class="card-desc">The static taint engine re-analyzes the dataflow. It explicitly verifies that sanitizers (e.g. DOMPurify, shlex.quote, parameter binding) break the reachability edge.</div>
+          </div>
+
+          <div class="feature-card" style="border-top: 3px solid var(--emerald);">
+            <div class="card-kicker" style="color: var(--emerald);">STEP 3: PROOF</div>
+            <div class="card-title">Verified Fixed Status</div>
+            <div class="card-desc">Once verified, the issue status transitions to 'Verified Fixed' with a tamper-evident audit badge. The edge in the Security Graph is severed.</div>
+          </div>
+        </div>
+
+        <div class="feature-card" style="margin-top: 20px; border: 1px solid var(--cyan); background: var(--card-alt);">
+          <div class="card-kicker" style="color: var(--cyan);">THE LIVE SYMBOLIC SANDBOX (/lab)</div>
+          <div class="card-title" style="font-size: 16px;">Interactive Live Probe Simulator with Toggleable Defenses</div>
+          <div class="card-desc">Allows security teams to simulate hostile attack vectors (<code style="color: var(--cyan);">1' OR '1'='1</code>, <code style="color: var(--cyan);">; rm -rf /</code>, <code style="color: var(--cyan);">&lt;script&gt;</code>) in real-time against mocked AST nodes. Toggling defenses demonstrates instant payload neutralization without touching live infrastructure.</div>
+        </div>
+      </div>
+
+      <!-- SLIDE 9: Self-Security & Privacy -->
+      <div class="slide" data-slide="9">
+        <div class="slide-kicker">SELF-SECURITY & PRIVACY</div>
+        <h1 class="slide-title">Who Audits the Auditor? Zero-Trust Client Sandbox</h1>
+        <div class="slide-subtitle">Built under strict zero-trust principles to protect against hostile scanned code and IP leakage.</div>
+
+        <div class="grid-4" style="margin-top: 10px;">
+          <div class="feature-card" style="border-top: 3px solid var(--cyan);">
+            <div class="card-kicker" style="color: var(--cyan);">PILLAR #01</div>
+            <div class="card-title" style="font-size: 15px;">Zero Code Execution</div>
+            <div style="font-size: 10px; font-weight: 700; color: var(--cyan); margin-bottom: 8px;">PASSIVE LEXICAL STREAM</div>
+            <div class="card-desc" style="font-size: 12px;">Uploaded code is treated strictly as passive text data. It is never executed, evaluated with eval(), or spawned inside a VM or container.</div>
+          </div>
+
+          <div class="feature-card" style="border-top: 3px solid var(--emerald);">
+            <div class="card-kicker" style="color: var(--emerald);">PILLAR #02</div>
+            <div class="card-title" style="font-size: 15px;">Zero Remote Storage</div>
+            <div style="font-size: 10px; font-weight: 700; color: var(--emerald); margin-bottom: 8px;">LOCAL INDEXEDDB</div>
+            <div class="card-desc" style="font-size: 12px;">100% of parsed ASTs and findings live exclusively in the browser's local IndexedDB. Zero project code is written to a backend database.</div>
+          </div>
+
+          <div class="feature-card" style="border-top: 3px solid var(--purple);">
+            <div class="card-kicker" style="color: var(--purple);">PILLAR #03</div>
+            <div class="card-title" style="font-size: 15px;">Scrubbed AI Boundary</div>
+            <div style="font-size: 10px; font-weight: 700; color: var(--purple); margin-bottom: 8px;">0 LOC SENT TO CLOUD</div>
+            <div class="card-desc" style="font-size: 12px;">When calling NVIDIA Nemotron, code is strictly stripped. Only abstract category names and frameworks are transmitted. Your IP never leaves the tab.</div>
+          </div>
+
+          <div class="feature-card" style="border-top: 3px solid var(--amber);">
+            <div class="card-kicker" style="color: var(--amber);">PILLAR #04</div>
+            <div class="card-title" style="font-size: 15px;">DOM XSS Immunity</div>
+            <div style="font-size: 10px; font-weight: 700; color: var(--amber); margin-bottom: 8px;">DOMPURIFY SANITIZATION</div>
+            <div class="card-desc" style="font-size: 12px;">Hostile repositories cannot compromise the scanner interface. All rendered syntax snippets use HTML entity escaping and DOMPurify sanitization.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 10: Competitive Advantage -->
+      <div class="slide" data-slide="10">
+        <div class="slide-kicker">COMPETITIVE ADVANTAGE</div>
+        <h1 class="slide-title">Why FRIDAY Wins: Outperforming Traditional AppSec</h1>
+        <div class="slide-subtitle">A side-by-side comparison across detection, privacy, explainability, and remediation speed.</div>
+
+        <table class="slide-table" style="margin-top: 8px;">
+          <thead>
+            <tr>
+              <th>Capability / Criteria</th>
+              <th>SonarQube</th>
+              <th>Snyk / Checkmarx</th>
+              <th>Cloud AI Wrappers</th>
+              <th style="color: var(--cyan);">FRIDAY Platform</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="highlight">Zero-Day Logic Flaws</td>
+              <td>❌ Invisible (No CVE)</td>
+              <td>❌ Invisible (No CVE)</td>
+              <td>⚠️ Hallucinations</td>
+              <td class="highlight" style="color: var(--cyan);">✅ Deterministic AST Taint</td>
+            </tr>
+            <tr>
+              <td class="highlight">Source Code Privacy</td>
+              <td>❌ Server Required</td>
+              <td>❌ Uploads to Cloud</td>
+              <td>❌ Exfiltrates Full Code</td>
+              <td class="highlight" style="color: var(--cyan);">✅ 100% In-Browser (0 LOC)</td>
+            </tr>
+            <tr>
+              <td class="highlight">Visual Proof Graph</td>
+              <td>❌ Static Text Logs</td>
+              <td>❌ Text-Only Traces</td>
+              <td>❌ None / Chat Box</td>
+              <td class="highlight" style="color: var(--cyan);">✅ Interactive Flow Graph</td>
+            </tr>
+            <tr>
+              <td class="highlight">Autonomous Hotpatching</td>
+              <td>❌ None (Manual Fix)</td>
+              <td>❌ None (Manual Fix)</td>
+              <td>⚠️ Unverified Code Gen</td>
+              <td class="highlight" style="color: var(--cyan);">✅ Middleware + WAF Rules</td>
+            </tr>
+            <tr>
+              <td class="highlight">Countermeasure Verify</td>
+              <td>❌ Manual Code Review</td>
+              <td>❌ Manual Code Review</td>
+              <td>❌ Blind LLM Trust</td>
+              <td class="highlight" style="color: var(--cyan);">✅ AST System Check</td>
+            </tr>
+            <tr>
+              <td class="highlight">Scan Latency (Avg)</td>
+              <td>⏳ 5 - 15 Minutes</td>
+              <td>⏳ 2 - 5 Minutes</td>
+              <td>⏳ 30 - 60 Seconds</td>
+              <td class="highlight" style="color: var(--cyan);">⚡ &lt; 3.5 Seconds (In-Tab)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- SLIDE 11: Production Verification -->
+      <div class="slide" data-slide="11">
+        <div class="slide-kicker">PRODUCTION READINESS</div>
+        <h1 class="slide-title">Enterprise-Grade Engineering & Benchmark Metrics</h1>
+        <div class="slide-subtitle">Battle-tested across automated suites, production builds, and real repositories.</div>
+
+        <div class="grid-4" style="margin-top: 10px;">
+          <div class="feature-card" style="border: 1px solid var(--emerald);">
+            <div class="card-stat" style="color: var(--emerald);">31 / 31</div>
+            <div class="card-title" style="font-size: 14px;">Automated Tests Passing</div>
+            <div class="card-desc" style="font-size: 11px;">Vitest suite verifying Python lexers, web AST analyzers, taint propagators, and GitHub ingestion.</div>
+          </div>
+
+          <div class="feature-card" style="border: 1px solid var(--cyan);">
+            <div class="card-stat" style="color: var(--cyan);">&lt; 3.5s</div>
+            <div class="card-title" style="font-size: 14px;">Real-Time Scan Latency</div>
+            <div class="card-desc" style="font-size: 11px;">Average full-repository AST parsing and taint dataflow synthesis running in browser worker threads.</div>
+          </div>
+
+          <div class="feature-card" style="border: 1px solid var(--purple);">
+            <div class="card-stat" style="color: var(--purple);">0 LOC</div>
+            <div class="card-title" style="font-size: 14px;">Code Transmitted</div>
+            <div class="card-desc" style="font-size: 11px;">Zero proprietary code sent to servers or LLMs. Verifiable via browser Network tab inspection.</div>
+          </div>
+
+          <div class="feature-card" style="border: 1px solid var(--amber);">
+            <div class="card-stat" style="color: var(--amber);">120B</div>
+            <div class="card-title" style="font-size: 14px;">Nemotron 3.5 Super VL</div>
+            <div class="card-desc" style="font-size: 11px;">Advanced NVIDIA reasoning engine powering structured exploitability analysis and hotpatching.</div>
+          </div>
+        </div>
+
+        <div class="feature-card" style="margin-top: 18px; border: 1px solid var(--border);">
+          <div style="font-size: 11px; font-weight: 700; color: var(--cyan); margin-bottom: 8px;">MODERN HIGH-PERFORMANCE TECH STACK</div>
+          <div style="font-size: 13px; color: var(--text-muted); line-height: 1.8;">
+            • <strong style="color: var(--text);">Frontend &amp; SSR:</strong> TanStack Start · React 19 · Vite 8 · Nitro Engine · TypeScript 5.8 · Tailwind CSS 4<br>
+            • <strong style="color: var(--text);">Taint Graph Engine:</strong> @xyflow/react (React Flow) · Custom Python &amp; Web AST Lexers<br>
+            • <strong style="color: var(--text);">AI Integration:</strong> NVIDIA Integrate API (nvidia/nemotron-3.5-super-vl-120b-a12b)<br>
+            • <strong style="color: var(--text);">Security &amp; Persistence:</strong> IndexedDB (idb-keyval) · DOMPurify · JSZip · jsPDF Executive Reports
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 12: Live Demo Roadmap -->
+      <div class="slide" data-slide="12">
+        <div class="slide-kicker">DEMO ROADMAP</div>
+        <h1 class="slide-title">The Winning 5-Minute Jury Defense Roadmap</h1>
+        <div class="slide-subtitle">Execute this exact 5-step live sequence during the judging presentation.</div>
+
+        <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 6px;">
+          <div class="feature-card" style="padding: 12px 18px; flex-direction: row; align-items: center; gap: 16px; border-left: 4px solid var(--cyan);">
+            <div style="font-family: 'JetBrains Mono', monospace; font-weight: 800; font-size: 13px; color: var(--cyan); width: 60px;">MIN 1</div>
+            <div>
+              <div style="font-weight: 700; color: #FFF; font-size: 14px;">The Hook &amp; Live GitHub Ingestion</div>
+              <div style="font-size: 12px; color: var(--text-muted);">Open <code>/scan</code> · Paste live repo URL · Show AST tokenizing to graph in &lt; 3s with 0 server transmission.</div>
+            </div>
+          </div>
+
+          <div class="feature-card" style="padding: 12px 18px; flex-direction: row; align-items: center; gap: 16px; border-left: 4px solid var(--purple);">
+            <div style="font-family: 'JetBrains Mono', monospace; font-weight: 800; font-size: 13px; color: var(--purple); width: 60px;">MIN 2</div>
+            <div>
+              <div style="font-weight: 700; color: #FFF; font-size: 14px;">Visual Taint Proof &amp; Findings Explorer</div>
+              <div style="font-size: 12px; color: var(--text-muted);">Click <code>🔥 0-Day Threat Surface</code> filter on <code>/findings</code>. Open finding to inspect Source-to-Sink Security Flow Graph.</div>
+            </div>
+          </div>
+
+          <div class="feature-card" style="padding: 12px 18px; flex-direction: row; align-items: center; gap: 16px; border-left: 4px solid var(--emerald);">
+            <div style="font-family: 'JetBrains Mono', monospace; font-weight: 800; font-size: 13px; color: var(--emerald); width: 60px;">MIN 3</div>
+            <div>
+              <div style="font-weight: 700; color: #FFF; font-size: 14px;">NVIDIA Nemotron 3.5 Triage &amp; Virtual Hotpatch</div>
+              <div style="font-size: 12px; color: var(--text-muted);">Trigger 'Run Zero-Day Analysis'. Stream Nemotron reasoning: Exploit Rationale &rarr; Drop-in Middleware &rarr; Cloudflare WAF Rule.</div>
+            </div>
+          </div>
+
+          <div class="feature-card" style="padding: 12px 18px; flex-direction: row; align-items: center; gap: 16px; border-left: 4px solid var(--amber);">
+            <div style="font-family: 'JetBrains Mono', monospace; font-weight: 800; font-size: 13px; color: var(--amber); width: 60px;">MIN 4</div>
+            <div>
+              <div style="font-weight: 700; color: #FFF; font-size: 14px;">Interactive Countermeasure Verification</div>
+              <div style="font-size: 12px; color: var(--text-muted);">Click 'Verify Solution with System Check'. Demonstrate deterministic AST engine severing the taint edge &rarr; <code>Verified Fixed</code>.</div>
+            </div>
+          </div>
+
+          <div class="feature-card" style="padding: 12px 18px; flex-direction: row; align-items: center; gap: 16px; border-left: 4px solid var(--cyan);">
+            <div style="font-family: 'JetBrains Mono', monospace; font-weight: 800; font-size: 13px; color: var(--cyan); width: 60px;">MIN 5</div>
+            <div>
+              <div style="font-weight: 700; color: #FFF; font-size: 14px;">Zero-Knowledge Privacy Punchline &amp; Defense</div>
+              <div style="font-size: 12px; color: var(--text-muted);">Open <code>/settings</code>. Show Engine: <code>Active · 100% in-browser</code> and Privacy: <code>Enforced · 0 LOC transmitted</code>. Conclude presentation.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide Progress Bar -->
+      <div class="progress-bar-container">
+        <div class="progress-bar" id="progressBar"></div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Speaker Notes Drawer (Toggled with N or Notes button) -->
+  <div class="notes-drawer" id="notesDrawer">
+    <div class="notes-header">
+      <div class="notes-title">
+        <span>📝</span>
+        <span id="notesTitle">SPEAKER NOTES · SLIDE 01</span>
+      </div>
+      <button class="btn" onclick="toggleNotes()" style="padding: 4px 10px; font-size: 11px;">Close ✕</button>
+    </div>
+    <div class="notes-body" id="notesContent">Loading notes...</div>
+  </div>
+
+  <!-- Slide Overview Modal (Toggled with O or Slides button) -->
+  <div class="overview-modal" id="overviewModal">
+    <div class="overview-header">
+      <h2 style="font-size: 20px; font-weight: 700; color: #FFF;">Slide Deck Overview</h2>
+      <button class="btn btn-primary" onclick="toggleOverview()">Close Overview ✕</button>
+    </div>
+    <div class="overview-grid" id="overviewGrid"></div>
+  </div>
+
+  <script>
+    const speakerNotes = [
+      `SPEAKER SCRIPT (Slide 1 - 0:00 to 0:45):
+"Good morning, judges. Today we are proud to present FRIDAY: an explainable code security and zero-day defense platform that eliminates the two greatest vulnerabilities facing modern enterprises: the 60-day patching window, and the cloud AI privacy hazard.
+
+Most security scanners either rely on outdated CVE signatures, or require you to upload your proprietary code to a third-party server. FRIDAY fundamentally shifts this paradigm: 100% of our code analysis runs inside the auditor's browser with zero code transmission, while combining mathematical taint flow analysis with NVIDIA Nemotron-powered virtual hotpatching to neutralize zero-days in seconds."`,
+
+      `SPEAKER SCRIPT (Slide 2 - 0:45 to 1:30):
+"Let's look at why current AppSec pipelines fail when it matters most.
+First, traditional scanners like SonarQube or Snyk look backward: they search for known CVE signatures. If a developer introduces a bespoke dataflow trap in Python or TypeScript that has no CVE, it passes right through to production.
+Second, the remediation gap: finding a flaw is only 10% of the battle. It takes 45 to 60 days on average to write, test, and ship a production refactor. What protects the server tonight? Nothing.
+Third, modern cloud AI security tools demand that you upload your secret source code to an external cloud API. For regulated banking, healthcare, and enterprise teams, that's an immediate non-starter."`,
+
+      `SPEAKER SCRIPT (Slide 3 - 1:30 to 2:15):
+"FRIDAY is built on four core technical breakthroughs:
+1. Zero-Day Reachability: We analyze the AST grammar. If user input flows from an HTTP parameter into child_process.exec() or subprocess.check_output(shell=True), we detect it deterministically—even if that code was written this morning.
+2. Visual Explainability: We replace endless CSV alert lists with interactive React Flow graphs showing the exact source-to-sink chain.
+3. Autonomous Virtual Hotpatching: We close the 60-day lag by instantly producing production-ready WAF signatures and application middleware.
+4. Absolute Zero-Knowledge Privacy: Everything runs client-side in the browser. Zero lines of code ever hit a remote server."`,
+
+      `SPEAKER SCRIPT (Slide 4 - 2:15 to 3:00):
+"Here is how FRIDAY's Triad Architecture operates under the hood.
+Tier 1 is our client-side deterministic taint engine. In under 3.5 seconds, it tokenizes ASTs directly in the user's browser, tracing inputs to sinks and caching everything in IndexedDB.
+Tier 2 is our NVIDIA Nemotron 3.5 Super VL integration. Notice our strict privacy barrier: we scrub the payload completely. We send only the abstract vulnerability category and target framework—never the user's proprietary source code. Nemotron then streams its reasoning tokens to formulate an exploitability rationale.
+Tier 3 is our autonomous hotpatching and verification layer: generating perimeter WAF rules, drop-in application middleware, and testing the fix in our live Countermeasure Lab."`,
+
+      `SPEAKER SCRIPT (Slide 5 - 3:00 to 3:45):
+"Let's look at the actual vulnerability coverage.
+FRIDAY ships with two dual-engine parsers: one for Python web frameworks (Flask, FastAPI, SQLAlchemy) and one for TypeScript, React, and Node.js.
+Notice the depth of these rules: we don't look for CVE keywords. In NODE-CMDI-004, we trace parameter ingress directly into child_process.exec(). In REACT-XSS-001, we verify whether DOMPurify.sanitize() wraps dangerouslySetInnerHTML.
+Because we analyze the grammar and taint graph directly, novel logic flaws introduced in zero-day commits are flagged with mathematical accuracy."`,
+
+      `SPEAKER SCRIPT (Slide 6 - 3:45 to 4:30):
+"Judges, security engineers hate alert fatigue. When a scanner outputs 500 warnings, nobody fixes them.
+In FRIDAY, we provide visual explainability. We built an interactive security flow graph using React Flow.
+Look at how a finding is represented:
+Node 1: The untrusted user ingress.
+Node 2: The concatenation and data passing step.
+Node 3: The unconstrained execution sink.
+This isn't an AI hallucination or a vague heuristic. It is a mathematical graph proving reachability. If an attacker cannot reach the sink from user input, FRIDAY eliminates the alert."`,
+
+      `SPEAKER SCRIPT (Slide 7 - 4:30 to 5:15):
+"Now comes the most critical capability of FRIDAY: Virtual Hotpatching.
+When a zero-day is discovered at 2:00 AM on a Friday, you cannot wait 60 days for a sprint cycle to refactor the codebase.
+FRIDAY synthesizes two immediate defensive layers:
+1. Application Middleware: A drop-in sanitizer for Express or Flask that intercepts the exact parameter and strips malicious metacharacters.
+2. Perimeter WAF Rule: A ModSecurity or Cloudflare rule ready to deploy at your reverse proxy in 30 seconds.
+This neutralizes exploitation at the network edge immediately, protecting your infrastructure while developers take the necessary time to refactor."`,
+
+      `SPEAKER SCRIPT (Slide 8 - 5:15 to 6:00):
+"Anyone can generate an AI code snippet, but how do you know the fix actually works?
+FRIDAY introduces the Countermeasure Lab and 'Verify Solution with System Check'.
+When you click Verify, FRIDAY doesn't ask an LLM if it looks good. It re-runs our deterministic AST engine over the proposed code.
+It checks mathematically: Is the untrusted parameter sanitized? Is DOMPurify present? Is the SQL query parameterized?
+If the taint edge is broken, the status transitions to 'Verified Fixed'.
+Furthermore, our /lab route lets developers test simulated attack payloads against active defenses in a live symbolic sandbox."`,
+
+      `SPEAKER SCRIPT (Slide 9 - 6:00 to 6:45):
+"Judges often ask: 'Who audits the auditor? What if someone feeds malicious code into your security scanner?'
+We engineered FRIDAY with a strict defense-in-depth model:
+1. Zero Code Execution: Code is purely a passive string. We never run it.
+2. Zero Remote Storage: Scanned code lives solely in the browser's IndexedDB. If you clear cache or close the tab, the data is gone.
+3. AI Privacy Boundary: We scrub all payloads before hitting NVIDIA Nemotron. 0 lines of code leave your computer.
+4. DOM XSS Immunity: Scanned files cannot exploit the UI because of strict DOMPurify sanitization.
+This gives regulated enterprises the confidence to audit internal codebases with zero IP risk."`,
+
+      `SPEAKER SCRIPT (Slide 10 - 6:45 to 7:30):
+"When you compare FRIDAY against existing market solutions, the contrast is stark.
+SonarQube and Snyk require complex server configurations, rely on backward-looking CVE databases, and leave you with a 60-day patching lag.
+Cloud AI tools hallucinate and leak proprietary source code to cloud servers.
+FRIDAY is the only platform that gives you:
+- Deterministic zero-day detection via AST taint flow
+- 100% zero-knowledge in-browser privacy with 0 LOC transmitted
+- Instant virtual hotpatching at the middleware and WAF level
+- Sub-3.5-second scan speed right in the browser."`,
+
+      `SPEAKER SCRIPT (Slide 11 - 7:30 to 8:15):
+"FRIDAY is not a weekend proof-of-concept; it is built with enterprise engineering rigor.
+Our automated test suite runs 31 automated unit and AST integration tests with 100% passing status.
+Our production build compiles cleanly on Vite 8, TanStack Start SSR, and Nitro.
+Our average scan latency is under 3.5 seconds for complete repositories, all running client-side.
+And our privacy boundary is 100% verifiable: you can inspect the browser's Network tab live and see that zero lines of code leave the machine."`,
+
+      `SPEAKER SCRIPT (Slide 12 - Conclusion & Live Demo Transition):
+"Judges, to see this live in action right now:
+In Minute 1, we ingest a live GitHub repository in under 3 seconds right inside the browser.
+In Minute 2, we show you the mathematical proof: an interactive source-to-sink taint graph.
+In Minute 3, NVIDIA Nemotron synthesizes a drop-in middleware hotpatch and Cloudflare WAF rule.
+In Minute 4, our system re-verifies the fix deterministically and marks it Verified Fixed.
+And in Minute 5, we verify our privacy boundary: zero lines of code ever left this browser.
+Thank you, and we welcome your questions!"
+`
+    ];
+
+    const slideTitles = [
+      "Title & Hook: The Zero-Day Paradigm",
+      "The Industry Crisis: 60-Day Lag & Privacy",
+      "The FRIDAY Solution: Taint & AI Defense",
+      "Triad System Architecture",
+      "Zero-Day Vulnerability Coverage Matrix",
+      "Visual Explainability & Security Flow Graphs",
+      "Autonomous Virtual Hotpatching (Middleware & WAF)",
+      "Interactive Countermeasure Verification & /lab",
+      "Self-Security & Zero-Knowledge Privacy",
+      "Competitive Market Advantage Matrix",
+      "Production Verification & Engineering Metrics",
+      "The Winning 5-Minute Jury Demo Roadmap"
+    ];
+
+    let currentSlide = 1;
+    const totalSlides = 12;
+
+    const slides = document.querySelectorAll('.slide');
+    const indicator = document.getElementById('slideIndicator');
+    const progressBar = document.getElementById('progressBar');
+    const notesContent = document.getElementById('notesContent');
+    const notesTitle = document.getElementById('notesTitle');
+    const notesDrawer = document.getElementById('notesDrawer');
+    const overviewModal = document.getElementById('overviewModal');
+    const overviewGrid = document.getElementById('overviewGrid');
+
+    function updateSlide() {
+      slides.forEach((s, idx) => {
+        s.classList.toggle('active', idx + 1 === currentSlide);
+      });
+
+      indicator.textContent = `${String(currentSlide).padStart(2, '0')} / ${String(totalSlides).padStart(2, '0')}`;
+      progressBar.style.width = `${(currentSlide / totalSlides) * 100}%`;
+
+      notesTitle.textContent = `SPEAKER NOTES · SLIDE ${String(currentSlide).padStart(2, '0')} - ${slideTitles[currentSlide - 1]}`;
+      notesContent.textContent = speakerNotes[currentSlide - 1];
+
+      renderOverview();
+    }
+
+    function nextSlide() {
+      if (currentSlide < totalSlides) {
+        currentSlide++;
+        updateSlide();
+      }
+    }
+
+    function prevSlide() {
+      if (currentSlide > 1) {
+        currentSlide--;
+        updateSlide();
+      }
+    }
+
+    function goToSlide(n) {
+      if (n >= 1 && n <= totalSlides) {
+        currentSlide = n;
+        updateSlide();
+        if (overviewModal.classList.contains('open')) {
+          toggleOverview();
+        }
+      }
+    }
+
+    function toggleNotes() {
+      notesDrawer.classList.toggle('open');
+      document.getElementById('notesBtn').classList.toggle('btn-primary', notesDrawer.classList.contains('open'));
+    }
+
+    function toggleOverview() {
+      overviewModal.classList.toggle('open');
+    }
+
+    function toggleFullscreen() {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen().catch(err => {
+          alert(`Error entering fullscreen: ${err.message}`);
+        });
+      } else {
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        }
+      }
+    }
+
+    function renderOverview() {
+      overviewGrid.innerHTML = '';
+      slideTitles.forEach((t, i) => {
+        const card = document.createElement('div');
+        card.className = `overview-card ${i + 1 === currentSlide ? 'active' : ''}`;
+        card.innerHTML = `
+          <div class="overview-card-num">SLIDE ${String(i + 1).padStart(2, '0')}</div>
+          <div class="overview-card-title">${t}</div>
+        `;
+        card.onclick = () => goToSlide(i + 1);
+        overviewGrid.appendChild(card);
+      });
+    }
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
+        e.preventDefault();
+        nextSlide();
+      } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+        e.preventDefault();
+        prevSlide();
+      } else if (e.key === 'Home') {
+        e.preventDefault();
+        goToSlide(1);
+      } else if (e.key === 'End') {
+        e.preventDefault();
+        goToSlide(totalSlides);
+      } else if (e.key.toLowerCase() === 'n') {
+        e.preventDefault();
+        toggleNotes();
+      } else if (e.key.toLowerCase() === 'o') {
+        e.preventDefault();
+        toggleOverview();
+      } else if (e.key.toLowerCase() === 'f') {
+        e.preventDefault();
+        toggleFullscreen();
+      } else if (e.key === 'Escape') {
+        if (overviewModal.classList.contains('open')) {
+          toggleOverview();
+        } else if (notesDrawer.classList.contains('open')) {
+          toggleNotes();
+        }
+      }
+    });
+
+    // Initialize
+    updateSlide();
+  </script>
+</body>
+</html>
+
